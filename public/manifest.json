@@ -1,0 +1,13 @@
+{
+  "name": "Grand Budapest",
+  "short_name": "Grand Budapest",
+  "icons": [
+    {
+      "src": "google-touch-icon.png",
+      "sizes": "512x512"
+    }
+  ],
+  "background_color": "#ffffff",
+  "theme_color": "#FBE9E7",
+  "display": "fullscreen"
+}

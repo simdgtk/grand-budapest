@@ -1,0 +1,18 @@
+body {
+  font-family: 'hanken', sans-serif;
+  font-size: 1rem;
+  background-color: $color-bg;
+  color: $color-black;
+}
+
+h2 {
+  font-size: 1.5rem;
+  line-height: 130%;
+  font-family: 'gupter', sans-serif;
+}
+
+.section {
+  padding: 0 2rem;
+  max-width: 1440px;
+  margin: 0 auto;
+}

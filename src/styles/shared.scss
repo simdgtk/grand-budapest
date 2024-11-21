@@ -1,0 +1,38 @@
+// variables
+$color-black: #101010;
+$color-bg: #FBE9E7;
+$color-primary: #C191A0;
+$color-gray: #484342;
+$color-primary-dark: #F0D1CD;
+$color-secondary: #B29B98;
+
+
+// typography
+@font-face {
+  font-family: 'melodrama';
+  src: url('/src/assets/fonts/melodrama-medium.woff2') format('woff2'),
+    url('/src/assets/fonts/melodrama-medium.woff') format('woff'),
+    url('/src/assets/fonts/melodrama-medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'gupter';
+  src: url('/src/assets/fonts/gupter.woff2') format('woff2'),
+    url('/src/assets/fonts/gupter.woff') format('woff'),
+    url('/src/assets/fonts/gupter.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'hanken';
+  src: url('/src/assets/fonts/hankengrotesk-light.woff2') format('woff2'),
+    url('/src/assets/fonts/hankengrotesk-light.woff') format('woff'),
+    url('/src/assets/fonts/hankengrotesk-light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+// general styles
