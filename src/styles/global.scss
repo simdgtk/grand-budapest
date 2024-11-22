@@ -11,8 +11,50 @@ h2 {
   font-family: 'gupter', sans-serif;
 }
 
+h3 {
+  font-size: 1.25rem;
+  line-height: 130%;
+  font-family: 'gupter', sans-serif;
+}
+
 .section {
   padding: 0 2rem;
-  max-width: 1440px;
+  // max-width: 1440px;
   margin: 0 auto;
+
+  @media screen and (max-width: 900px) {
+    padding: 0 1rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    padding: 0;
+  }
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+    gap: 2rem;
+}
+
+// lenis
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
 }

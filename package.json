@@ -10,6 +10,8 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
+    "gsap": "^3.12.5",
+    "lenis": "^1.1.16",
     "sass": "^1.81.0",
     "vue": "^3.5.12"
   },

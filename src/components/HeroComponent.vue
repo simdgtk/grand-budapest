@@ -24,12 +24,6 @@
         </div>
       </div>
     </div>
-    <h2>Gupter</h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum doloribus eum laboriosam consequatur.
-      Eaque, rem
-      explicabo iusto ducimus beatae dolor fugiat dolorum tempore tenetur aspernatur officia perspiciatis inventore
-      quo
-      deleniti!</p>
   </div>
 </template>
 <script setup>
@@ -78,7 +72,7 @@ const lang = ref('fr');
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 40vw;
+    width: 36vw;
     height: fit-content;
     transform: translate(-50%, -50%);
     z-index: 2;
@@ -117,14 +111,14 @@ const lang = ref('fr');
   flex-direction: column;
   justify-content: center;
   width: fit-content;
-  transform: translateY(0.5vw);
+  transform: translateY(1.2vw);
 
   .top {
     width: 100%;
     display: flex;
     justify-content: space-between;
     // font-size: 13.688rem;
-    font-size: 16vw;
+    font-size: 15vw;
   }
 
   .bottom {
