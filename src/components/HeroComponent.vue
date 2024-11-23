@@ -8,15 +8,15 @@
     <div class="center">
       <div class="h1">
         <div class="top">
-          <span class="title">THE</span>
-          <span class="title">GRAND</span>
+          <span class="title" ref="the">THE</span>
+          <span class="title" ref="grand">GRAND</span>
         </div>
         <div class="bottom">
-          <span class="title big">BUDAPEST</span>
+          <span class="title big" ref="budapest">BUDAPEST</span>
         </div>
       </div>
-      <div class="img-container">
-        <div class="img-relative">
+      <div class="img-container" ref="image">
+        <div class="img-relative" ref="imageZoom">
           <img src="@/assets/images/layer4bg.webp" alt="Grand Budapest Hôtel facade" width="2000" height="1500" />
           <img src="@/assets/images/layer1.webp" alt="Grand Budapest Hôtel facade" width="2000" height="1500" />
           <img src="@/assets/images/layer3.webp" alt="Grand Budapest Hôtel facade" width="2000" height="1500" />
@@ -27,9 +27,56 @@
   </div>
 </template>
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
+import { gsap } from "gsap";
+import SplitType from 'split-type';
 
 const lang = ref('fr');
+
+// image animation
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
+const image = ref(null);
+const imageZoom = ref(null);
+onMounted(() => {
+  gsap.from(image.value, {
+    clipPath: 'polygon(0 50%, 100% 50%, 100% 50%, 0 50%)',
+    rotate: 7,
+    duration: 1.5,
+    delay: 0.2,
+    ease: 'power3.inOut'
+  });
+  gsap.from(imageZoom.value, {
+    scale: 1.2,
+    duration: 1.5,
+    delay: 0.2,
+    ease: 'power3.inOut'
+  });
+})
+
+
+// text animation
+const the = ref(null);
+const grand = ref(null);
+const budapest = ref(null);
+
+onMounted(() => {
+  const text = new SplitType([the.value, grand.value, budapest.value], { types: 'words, chars' });
+  gsap.fromTo(
+    text.chars,
+    { y: '130%' },
+    {
+      y: '0%',
+      duration: 1.5,
+      ease: 'power3.inOut',
+      stagger: 0.02,
+      delay: 0.2
+
+    }
+  );
+})
+
 
 </script>
 <style scoped lang="scss">
@@ -69,12 +116,14 @@ const lang = ref('fr');
   align-items: center;
 
   .img-container {
+    user-select: none;
     position: absolute;
     top: 50%;
     left: 50%;
     width: 36vw;
     height: fit-content;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) rotate(1.05deg);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     z-index: 2;
     aspect-ratio: 574 / 345;
 
@@ -103,6 +152,13 @@ const lang = ref('fr');
   line-height: 135%;
   font-family: 'melodrama', sans-serif;
   text-transform: uppercase;
+  overflow: hidden;
+  display: inline-block;
+
+  .letter {
+    display: inline-block;
+    transform: translateY(100%);
+  }
 }
 
 .h1 {

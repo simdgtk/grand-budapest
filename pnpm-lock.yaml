@@ -17,6 +17,9 @@ importers:
       sass:
         specifier: ^1.81.0
         version: 1.81.0
+      split-type:
+        specifier: ^0.3.4
+        version: 0.3.4
       vue:
         specifier: ^3.5.12
         version: 3.5.13
@@ -1223,6 +1226,9 @@ packages:
   speakingurl@14.0.1:
     resolution: {integrity: sha512-1POYv7uv2gXoyGFpBCmpDVSNV74IfsWlDW216UPjbWufNf+bSU6GdbDsxdcxtfwb4xlI3yxzOTKClUosxARYrQ==}
     engines: {node: '>=0.10.0'}
+
+  split-type@0.3.4:
+    resolution: {integrity: sha512-otEk9vnD8qwfLsk3Lx0gz+qRkNIJCx0mlyL47ImP/DjMuV39d75Lpfwjn9fHteDRz0aoOblSzQjSNT9+Sswxcg==}
 
   strip-final-newline@3.0.0:
     resolution: {integrity: sha512-dOESqjYr96iWYylGObzd39EuNTa5VJxyvVAEm5Jnh7KGo75V43Hk1odPQkNDyXNmUR6k+gEiDVXnjB8HJ3crXw==}
@@ -2503,6 +2509,8 @@ snapshots:
   source-map-js@1.2.1: {}
 
   speakingurl@14.0.1: {}
+
+  split-type@0.3.4: {}
 
   strip-final-newline@3.0.0: {}
 
