@@ -15,12 +15,16 @@
           <span class="title big" ref="budapest">BUDAPEST</span>
         </div>
       </div>
-      <div class="img-container" ref="image">
-        <div class="img-relative" ref="imageZoom">
-          <img src="@/assets/images/layer4bg.webp" alt="Grand Budapest Hôtel facade" width="2000" height="1500" />
-          <img src="@/assets/images/layer1.webp" alt="Grand Budapest Hôtel facade" width="2000" height="1500" />
-          <img src="@/assets/images/layer3.webp" alt="Grand Budapest Hôtel facade" width="2000" height="1500" />
-          <img src="@/assets/images/layer2.webp" alt="Grand Budapest Hôtel facade" width="2000" height="1500" />
+      <div class="img">
+        <div class="img-container" ref="image">
+          <div class="img-relative" ref="imageZoom">
+            <img src="@/assets/images/layer4bg.webp" alt="Grand Budapest Hôtel facade" width="2000" height="1500" />
+            <img src="@/assets/images/layer1.webp" alt="Grand Budapest Hôtel facade" width="2000" height="1500" />
+            <img src="@/assets/images/layer3.webp" alt="Grand Budapest Hôtel facade" width="2000" height="1500" />
+            <img src="@/assets/images/layer2.webp" alt="Grand Budapest Hôtel facade" width="2000" height="1500" />
+            <img src="@/assets/images/test.webp" alt="pont stp" width="2000" height="3282"
+              style="transform: translateY(-11%);" />
+          </div>
         </div>
       </div>
     </div>
@@ -42,7 +46,7 @@ const imageZoom = ref(null);
 onMounted(() => {
   gsap.from(image.value, {
     clipPath: 'polygon(0 50%, 100% 50%, 100% 50%, 0 50%)',
-    rotate: 7,
+    rotate: 8,
     duration: 1.5,
     delay: 0.2,
     ease: 'power3.inOut'
@@ -52,6 +56,24 @@ onMounted(() => {
     duration: 1.5,
     delay: 0.2,
     ease: 'power3.inOut'
+  });
+  gsap.fromTo(image.value, {
+  }, {
+    scale: 2.8,
+    rotate: 0,
+    y: 300,
+    aspectRatio: '1455 / 1107',
+    scrollTrigger: {
+      trigger: budapest.value,
+      start: "top center",
+      end: "bottom+=200px center",
+      scrub: 0.5,
+      markers: true
+    },
+    ease: 'power1.in'
+  }).to(image.value, {
+    aspectRatio: '1455 / 2500',
+    duration: 1,
   });
 })
 
@@ -84,6 +106,8 @@ onMounted(() => {
 <style scoped lang="scss">
 .section-full {
   position: relative;
+  overflow-x: hidden;
+  min-height: calc(200vh + 300px);
 
   .lang {
     position: absolute;
@@ -117,35 +141,54 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
 
-  .img-container {
-    user-select: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 36vw;
-    height: fit-content;
-    transform: translate(-50%, -50%) rotate(1.05deg);
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-    z-index: 2;
-    aspect-ratio: 574 / 345;
+  // &::after {
+  //   content: 'yes';
+  //   z-index: 999;
+  //   position: absolute;
+  //   bottom: -650px;
+  //   left: 0;
+  //   transform: translateY(70%);
+  //   width: 100%;
+  //   height: 100%;
+  //   background: url("@/assets/images/pont.svg");
+  //   background-position: center;
+  //   background-size: cover;
+  // }
+  .img {
+    overflow-y: hidden;
 
-    .img-relative {
-      position: relative;
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
-
-    img {
+    .img-container {
+      user-select: none;
+      overflow: hidden;
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      object-position: top;
+      top: 50%;
+      left: 50%;
+      width: 36vw;
+      height: fit-content;
+      transform: translate(-50%, -50%) rotate(2deg);
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+      z-index: 2;
       aspect-ratio: 574 / 345;
+      //aspect-ratio: 1455 / 1107;
 
+      .img-relative {
+        position: relative;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        object-position: top;
+        // aspect-ratio: 574 / 345;
+
+      }
     }
   }
 }
