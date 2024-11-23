@@ -56,7 +56,7 @@ onMounted(() => {
 })
 
 
-// text animation
+// title text animation
 const the = ref(null);
 const grand = ref(null);
 const budapest = ref(null);
@@ -76,6 +76,8 @@ onMounted(() => {
     }
   );
 })
+
+//
 
 
 </script>
@@ -149,7 +151,7 @@ onMounted(() => {
 }
 
 .title {
-  line-height: 135%;
+  line-height: 100%;
   font-family: 'melodrama', sans-serif;
   text-transform: uppercase;
   overflow: hidden;
@@ -167,7 +169,7 @@ onMounted(() => {
   flex-direction: column;
   justify-content: center;
   width: fit-content;
-  transform: translateY(1.2vw);
+  transform: translateY(2.7vw);
 
   .top {
     width: 100%;
@@ -181,6 +183,7 @@ onMounted(() => {
     // font-size: 16.563rem;
     font-size: 19vw;
     line-height: 120%;
+    margin-top: 7vw;
   }
 }
 
