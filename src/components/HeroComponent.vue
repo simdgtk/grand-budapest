@@ -144,14 +144,19 @@ onMounted(() => {
             }
           });
           imageAspect.to(funicular.value, {
-            y: `${75}px`,
-            x: `${pont.value.getBoundingClientRect().width * 0.517 * -1}px`,
-            duration: 1,
+            //pont.value.getBoundingClientRect().bottom - funicular.value.getBoundingClientRect().bottom + 150
+            y: funicular.value.getBoundingClientRect().height,
+            x: funicular.value.getBoundingClientRect().height * (-7.5 * Math.PI) / 18,
+            // x: getX(funicular.value.getBoundingClientRect().y),
+            ease: 'none',
+            // x: pont.value.getBoundingClientRect().left,
+            // y: `${window.innerHeight * 0.75}px`,
+            // x: `${pont.value.getBoundingClientRect().width * 0.517 * -1}px`,
             scrollTrigger: {
               trigger: container.value,
-              start: `${bottomValue} center`,
-              end: `${bottomValue} top`,
-              scrub: 0.5,
+              start: `${bottomValue + 50} end`,
+              end: `bottom+=${window.innerHeight}px end`,
+              scrub: 0.8,
               markers: true,
             }
           })
@@ -172,6 +177,7 @@ onMounted(() => {
           imageAspect.to(funicular.value, {
             //pont.value.getBoundingClientRect().bottom - funicular.value.getBoundingClientRect().bottom + 150
             y: funicular.value.getBoundingClientRect().height,
+            x: funicular.value.getBoundingClientRect().height * (-7.35 * Math.PI) / 18,
             // x: getX(funicular.value.getBoundingClientRect().y),
             ease: 'none',
             // x: pont.value.getBoundingClientRect().left,
