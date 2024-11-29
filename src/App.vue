@@ -8,6 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 import Lenis from 'lenis';
+import LoadingScreen from './components/LoadingScreen.vue';
 const lenis = new Lenis({
   lerp: 0.07,
 });
@@ -29,9 +30,10 @@ gsap.ticker.lagSmoothing(0);
 
 <template>
   <main>
+    <!-- <LoadingScreen /> -->
     <HeroComponent />
-    <!-- <ChaptersComponent />
-    <ShaderSection /> -->
+    <ChaptersComponent />
+    <!--  <ShaderSection /> -->
   </main>
 </template>
 
