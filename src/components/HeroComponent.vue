@@ -5,7 +5,7 @@
       <span>/</span>
       <span :class="lang == 'en' ? 'underline option' : 'option'" @click="lang = 'en', console.log(lang)">EN</span>
     </div>
-    <div class="center" ref="container">
+    <div class="center" ref="container" translate="no">
       <div class="h1">
         <div class="top">
           <span class="title" ref="the">THE</span>
