@@ -1,8 +1,12 @@
 <script setup>
 import { ref, onMounted } from 'vue';
+import { gsap } from "gsap";
+import SplitType from 'split-type';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const hat = ref(null);
 const mendls = ref(null);
+const footer = ref(null);
 
 onMounted(() => {
 
@@ -98,13 +102,38 @@ onMounted(() => {
     }, 15);
   });
 });
+
+// gsap
+gsap.registerPlugin(ScrollTrigger);
+onMounted(() => {
+  const splittedText = new SplitType(".text", { types: 'words, chars' });
+  gsap.from(
+    splittedText.chars,
+    {
+      y: '100%',
+      ease: 'power3.inOut',
+      stagger: {
+        each: 0.002,
+      },
+      scrollTrigger: {
+        trigger: footer.value,
+        start: "top center",
+        markers: true,
+        end: "top center",
+      },
+      onComplete: () => {
+
+      }
+    }
+  );
+})
 </script>
 
 
 
 <template>
   <div class="section">
-    <div class="footer-section">
+    <div class="footer-section" ref="footer">
       <div class="grid">
         <div class="image-container">
           <img ref="hat" src="@/assets/images/hat/lobbyhat0.webp" alt="Lobby hat" width="auto" height="auto"
@@ -113,14 +142,18 @@ onMounted(() => {
         <div class="text">
           <div class="paragraph">
             <h3>Pourquoi ce site ?</h3>
-            <p>Gustave H., éminent concierge et réceptionniste, fait visiter l’hôtel à Zero, son lobby-boy. S’ensuit
+            <p class="text-content">Gustave H., éminent concierge et réceptionniste, fait visiter l’hôtel à Zero, son
+              lobby-boy.
+              S’ensuit
               Gustave H., éminent concierge et réceptionniste fait visiter l’hôtel à Zero, son lobby-boy.
               S’ensuitGustave
               H., éminent concierge et réceptionniste fait visiter l’hôtel à Zero, son lobby-boy. S’ensuitGustave H.</p>
           </div>
           <div class="paragraph">
             <h3>Pourquoi ce site ?</h3>
-            <p>Gustave H., éminent concierge et réceptionniste, fait visiter l’hôtel à Zero, son lobby-boy. S’ensuit
+            <p class="text-content">Gustave H., éminent concierge et réceptionniste, fait visiter l’hôtel à Zero, son
+              lobby-boy.
+              S’ensuit
               Gustave H., éminent concierge et réceptionniste fait visiter l’hôtel à Zero, son lobby-boy.
               S’ensuitGustave
               H., éminent concierge et réceptionniste fait visiter l’hôtel à Zero, son lobby-boy. S’ensuitGustave H.</p>
@@ -141,10 +174,21 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
+::v-deep(.word) {
+  // overflow-y: hidden;
+  line-height: 140%;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  display: inline-block;
+
+  // .show {
+  //   overflow: visible;
+  // }
+}
+
 .footer-section {
   position: relative;
   padding: 5rem 0;
-  margin-bottom: 12rem;
+  margin: 12rem 0;
 
   .logo {
     position: absolute;
@@ -201,6 +245,8 @@ onMounted(() => {
     flex-direction: column;
     gap: 3.5rem;
     grid-column: span;
+
+
   }
 }
 
@@ -210,5 +256,6 @@ onMounted(() => {
   color: $color-secondary;
   width: 100%;
   text-align: center;
+  margin-bottom: 1rem;
 }
 </style>

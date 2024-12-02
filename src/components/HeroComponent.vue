@@ -1,10 +1,10 @@
 <template>
   <div class="section-full">
-    <div class="lang">
+    <!-- <div class="lang">
       <span :class="lang == 'fr' ? 'underline option' : 'option'" @click="lang = 'fr'">FR</span>
       <span>/</span>
       <span :class="lang == 'en' ? 'underline option' : 'option'" @click="lang = 'en', console.log(lang)">EN</span>
-    </div>
+    </div> -->
     <div class="center" ref="container" translate="no">
       <div class="h1">
         <div class="top">
@@ -36,7 +36,7 @@ import { ref, onMounted } from 'vue';
 import { gsap } from "gsap";
 import SplitType from 'split-type';
 
-const lang = ref('fr');
+// const lang = ref('fr');
 
 // image animation
 import { ScrollTrigger } from "gsap/ScrollTrigger";

@@ -1,3 +1,71 @@
+<script setup>
+import { ref, onMounted } from 'vue';
+import { gsap } from "gsap";
+import SplitType from 'split-type';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Draggable } from "gsap/Draggable";
+
+
+gsap.registerPlugin(ScrollTrigger, Draggable);
+
+const first = ref(null);
+const second = ref(null);
+const third = ref(null);
+const third2 = ref(null);
+const draggable = ref(null);
+
+const fourth = ref(null);
+const fifth = ref(null);
+
+const grid = ref(null);
+// texts animation
+
+const animation = (paragraph) => {
+  const textParagraphs = new SplitType(`.paragraph${paragraph}`, { types: 'words, chars' });
+  gsap.fromTo(
+    textParagraphs.chars,
+    { y: '180%' },
+    {
+      y: '0%',
+      duration: 0.8,
+      ease: 'power3.inOut',
+      stagger: 0.004,
+    }
+  );
+}
+onMounted(() => {
+  gsap.to([first.value, second.value, third.value, third2.value], {
+    scrollTrigger: {
+      trigger: grid.value,
+      start: "top center",
+      end: "center center",
+      scrub: 0.5,
+    },
+    transform: "scale(1) translateY(0)",
+    y: 100,
+  });
+
+  gsap.to([fourth.value, fifth.value], {
+    scrollTrigger: {
+      trigger: grid.value,
+      start: "center center",
+      end: "bottom top",
+      scrub: 0.5,
+    },
+    transform: "scale(1)",
+    y: 100,
+  });
+
+  // draggable painting
+  Draggable.create(draggable.value, {
+    bounds: { top: 0, left: 0, width: third.value.offsetWidth, height: third.value.offsetWidth - third.value.offsetWidth * 0.07 / 2 },
+    inertia: true,
+  });
+
+})
+const chapter = ref(null);
+</script>
+
 <template>
   <div class="section">
     <h2>Chapitres</h2>
@@ -71,75 +139,6 @@
     </div>
   </div>
 </template>
-<script setup>
-import { ref, onMounted } from 'vue';
-import { gsap } from "gsap";
-import SplitType from 'split-type';
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Draggable } from "gsap/Draggable";
-
-
-gsap.registerPlugin(ScrollTrigger, Draggable);
-
-const first = ref(null);
-const second = ref(null);
-const third = ref(null);
-const third2 = ref(null);
-const draggable = ref(null);
-
-const fourth = ref(null);
-const fifth = ref(null);
-
-const grid = ref(null);
-// texts animation
-
-const animation = (paragraph) => {
-  const textParagraphs = new SplitType(`.paragraph${paragraph}`, { types: 'words, chars' });
-  gsap.fromTo(
-    textParagraphs.chars,
-    { y: '180%' },
-    {
-      y: '0%',
-      duration: 0.8,
-      ease: 'power3.inOut',
-      stagger: 0.004,
-    }
-  );
-}
-onMounted(() => {
-  gsap.to([first.value, second.value, third.value, third2.value], {
-    scrollTrigger: {
-      trigger: grid.value,
-      start: "top center",
-      end: "center center",
-      scrub: 0.5,
-    },
-    transform: "scale(1) translateY(0)",
-    y: 100,
-  });
-
-  gsap.to([fourth.value, fifth.value], {
-    scrollTrigger: {
-      trigger: grid.value,
-      start: "center center",
-      end: "bottom top",
-      scrub: 0.5,
-    },
-    transform: "scale(1)",
-    y: 100,
-  });
-
-  // draggable painting
-  Draggable.create(draggable.value, {
-    bounds: { top: 0, left: 0, width: third.value.offsetWidth, height: third.value.offsetWidth - third.value.offsetWidth * 0.07 / 2 },
-    inertia: true,
-  });
-
-})
-const chapter = ref(null);
-</script>
-
-
 
 <style scoped lang="scss">
 ::v-deep(.word) {
