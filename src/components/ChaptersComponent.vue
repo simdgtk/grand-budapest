@@ -144,6 +144,7 @@ const chapter = ref(null);
 ::v-deep(.word) {
   overflow: hidden;
   display: inline-block;
+  line-height: 140%;
 }
 
 .section {
