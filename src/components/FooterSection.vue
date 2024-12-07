@@ -106,7 +106,7 @@ onMounted(() => {
 // gsap
 gsap.registerPlugin(ScrollTrigger);
 onMounted(() => {
-  const splittedText = new SplitType(".text", { types: 'words, chars' });
+  const splittedText = new SplitType(".footer__text", { types: 'words, chars' });
   gsap.from(
     splittedText.chars,
     {
@@ -118,12 +118,8 @@ onMounted(() => {
       scrollTrigger: {
         trigger: footer.value,
         start: "top center",
-        markers: true,
         end: "top center",
       },
-      onComplete: () => {
-
-      }
     }
   );
 })
@@ -133,25 +129,25 @@ onMounted(() => {
 
 <template>
   <div class="section">
-    <div class="footer-section" ref="footer">
-      <div class="grid">
-        <div class="image-container">
+    <div class="footer" ref="footer">
+      <div class="footer__grid">
+        <div class="footer__image-container">
           <img ref="hat" src="@/assets/images/hat/lobbyhat0.webp" alt="Lobby hat" width="auto" height="auto"
-            class="hat" />
+            class="footer__image footer__image--hat" />
         </div>
-        <div class="text">
-          <div class="paragraph">
+        <div class="footer__text">
+          <div class="footer__paragraph">
             <h3>Pourquoi ce site ?</h3>
-            <p class="text-content">Gustave H., éminent concierge et réceptionniste, fait visiter l’hôtel à Zero, son
+            <p>Gustave H., éminent concierge et réceptionniste, fait visiter l’hôtel à Zero, son
               lobby-boy.
               S’ensuit
               Gustave H., éminent concierge et réceptionniste fait visiter l’hôtel à Zero, son lobby-boy.
               S’ensuitGustave
               H., éminent concierge et réceptionniste fait visiter l’hôtel à Zero, son lobby-boy. S’ensuitGustave H.</p>
           </div>
-          <div class="paragraph">
+          <div class="footer__paragraph">
             <h3>Pourquoi ce site ?</h3>
-            <p class="text-content">Gustave H., éminent concierge et réceptionniste, fait visiter l’hôtel à Zero, son
+            <p>Gustave H., éminent concierge et réceptionniste, fait visiter l’hôtel à Zero, son
               lobby-boy.
               S’ensuit
               Gustave H., éminent concierge et réceptionniste fait visiter l’hôtel à Zero, son lobby-boy.
@@ -159,38 +155,69 @@ onMounted(() => {
               H., éminent concierge et réceptionniste fait visiter l’hôtel à Zero, son lobby-boy. S’ensuitGustave H.</p>
           </div>
         </div>
-        <div class="image-container">
+        <div class="footer__image-container">
           <img ref="mendls" src="@/assets/images/cap/mendls0.webp" alt="Lobby hat" width="auto" height="auto"
-            class="mendls" />
+            class="footer__image footer__image--mendls" />
         </div>
       </div>
-      <div class="logo">
-
+      <div class="footer__background-logo">
       </div>
     </div>
-    <span id="bottom-text" translate="no">Grand Budapest Hôtel, Zubrówka - 51° 9&apos; 10&apos;&apos;
+    <span class="footer__bottom-text" translate="no">Grand Budapest Hôtel, Zubrówka - 51° 9&apos; 10&apos;&apos;
       N, 14° 59&apos; 15,&apos;&apos; O</span>
   </div>
 </template>
 
 <style scoped lang="scss">
 ::v-deep(.word) {
-  // overflow-y: hidden;
   line-height: 140%;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   display: inline-block;
-
-  // .show {
-  //   overflow: visible;
-  // }
 }
 
-.footer-section {
+.footer {
   position: relative;
   padding: 5rem 0;
   margin: 12rem 0;
 
-  .logo {
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    grid-column: span;
+  }
+
+  &__grid {
+    display: grid;
+    align-items: center;
+    max-width: 95%;
+    margin: 0 auto;
+    gap: 2rem;
+    grid-template-columns: 1fr 2fr 1fr;
+  }
+
+  &__image-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+  }
+
+  &__image {
+    width: 80%;
+    margin: 0 auto;
+    height: auto;
+
+    &--mendls {
+      transform: scale(1.25);
+    }
+
+    &--hat {
+      transform: scale(0.75);
+    }
+  }
+
+  &__background-logo {
     position: absolute;
     opacity: 0.5;
     z-index: -1;
@@ -210,52 +237,14 @@ onMounted(() => {
     mask-repeat: no-repeat;
     mask-composite: intersect;
   }
-}
 
-.grid {
-  display: grid;
-  align-items: center;
-  max-width: 95%;
-  margin: 0 auto;
-  gap: 2rem;
-  grid-template-columns: 1fr 2fr 1fr;
-
-  .image-container {
+  &__bottom-text {
+    display: inline-block;
+    font-style: italic;
+    color: $color-secondary;
     width: 100%;
-    display: flex;
-    align-items: center;
-
-    img {
-      width: 80%;
-      margin: 0 auto;
-      height: auto;
-
-      &.mendls {
-        transform: scale(1.25);
-      }
-
-      &.hat {
-        transform: scale(0.75);
-      }
-    }
+    text-align: center;
+    margin-bottom: 1rem;
   }
-
-  .text {
-    display: flex;
-    flex-direction: column;
-    gap: 3.5rem;
-    grid-column: span;
-
-
-  }
-}
-
-#bottom-text {
-  display: inline-block;
-  font-style: italic;
-  color: $color-secondary;
-  width: 100%;
-  text-align: center;
-  margin-bottom: 1rem;
 }
 </style>
