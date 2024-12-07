@@ -1,30 +1,35 @@
 <template>
-  <div class="section-full">
-    <!-- <div class="lang">
-      <span :class="lang == 'fr' ? 'underline option' : 'option'" @click="lang = 'fr'">FR</span>
+  <div class="section-full section">
+    <div class="section__lang">
+      <span :class="lang == 'fr' ? 'section__lang-option--underline section__lang-option' : 'section__lang-option'"
+        @click="lang = 'fr'">FR</span>
       <span>/</span>
-      <span :class="lang == 'en' ? 'underline option' : 'option'" @click="lang = 'en', console.log(lang)">EN</span>
-    </div> -->
-    <div class="center" ref="container" translate="no">
-      <div class="h1">
-        <div class="top">
-          <span class="title" ref="the">THE</span>
-          <span class="title" ref="grand">GRAND</span>
+      <span :class="lang == 'en' ? 'section__lang-option--underline section__lang-option' : 'section__lang-option'"
+        @click="lang = 'en', console.log(lang)">EN</span>
+    </div>
+    <div class="section__center" ref="container" translate="no">
+      <div class="section__heading">
+        <div class="section__heading-top">
+          <span class="section__title" ref="the">THE</span>
+          <span class="section__title" ref="grand">GRAND</span>
         </div>
-        <div class="bottom">
-          <span class="title big" ref="budapest">BUDAPEST</span>
+        <div class="section__heading-bottom">
+          <span class="section__title" ref="budapest">BUDAPEST</span>
         </div>
       </div>
-      <div class="img">
-        <div class="img-container" ref="image">
-          <div class="img-relative" ref="imageZoom">
-            <img src="@/assets/images/layer4bg.webp" alt="Grand Budapest Hôtel facade" width="2000" height="1500" />
-            <img ref="funicular" src="@/assets/images/layer1.webp" alt="Grand Budapest Hôtel facade" width="2000"
-              height="1500" />
-            <img src="@/assets/images/layer3.webp" alt="Grand Budapest Hôtel facade" width="2000" height="1500" />
-            <img ref="pont" src="@/assets/images/test.webp" alt="pont stp" width="2000" height="3282"
-              style="transform: translateY(-11.5%); opacity: 0;" />
-            <img src="@/assets/images/layer2.webp" alt="Grand Budapest Hôtel facade" width="2000" height="1500" />
+      <div class="section__image">
+        <div class="section__image-container" ref="image">
+          <div class="section__image-relative" ref="imageZoom">
+            <img class="section__image-layer" src="@/assets/images/layer4bg.webp" alt="Grand Budapest Hôtel facade"
+              width="2000" height="1500" />
+            <img class="section__image-layer" ref="funicular" src="@/assets/images/layer1.webp"
+              alt="Grand Budapest Hôtel facade" width="2000" height="1500" />
+            <img class="section__image-layer" src="@/assets/images/layer3.webp" alt="Grand Budapest Hôtel facade"
+              width="2000" height="1500" />
+            <img class="section__image-layer" ref="pont" src="@/assets/images/test.webp" alt="pont stp" width="2000"
+              height="3282" style="transform: translateY(-11.5%); opacity: 0;" />
+            <img class="section__image-layer" src="@/assets/images/layer2.webp" alt="Grand Budapest Hôtel facade"
+              width="2000" height="1500" />
           </div>
         </div>
       </div>
@@ -36,7 +41,7 @@ import { ref, onMounted } from 'vue';
 import { gsap } from "gsap";
 import SplitType from 'split-type';
 
-// const lang = ref('fr');
+const lang = ref('fr');
 
 // image animation
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -191,13 +196,6 @@ onMounted(() => {
               markers: true,
             }
           })
-          // calcul de la position x du funicular en fonction de y
-          // const yFunicular = ref(null);
-          // yFunicular.value = funicular.value.getBoundingClientRect().bottom * -0.38;
-          // setInterval(() => {
-          //   yFunicular.value = funicular.value.getBoundingClientRect().left - (funicular.value.getBoundingClientRect().bottom * 0.38);
-          //   // console.log(funicular.value.getBoundingClientRect().y);
-          // }, 100);
         }
       },
     },
@@ -213,16 +211,13 @@ const the = ref(null);
 const grand = ref(null);
 const budapest = ref(null);
 
-onMounted(() => {
-
-})
 
 //
 
 
 </script>
 <style scoped lang="scss">
-.section-full {
+.section {
   position: relative;
   overflow: hidden;
   min-height: calc(230vh);
@@ -231,7 +226,7 @@ onMounted(() => {
     min-height: calc(130vh);
   }
 
-  .lang {
+  &__lang {
     position: absolute;
     right: 0;
     font-family: 'melodrama', sans-serif;
@@ -241,45 +236,64 @@ onMounted(() => {
     margin: 1rem;
     z-index: 2;
     gap: 0.3rem;
+  }
 
-    span {
-      &.option {
-        cursor: pointer;
+  &__lang-option {
+    cursor: pointer;
 
-        &.underline {
-          text-decoration: underline;
-          text-decoration-thickness: 1px;
-          text-underline-offset: 4px;
-        }
-      }
+    &--underline {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
     }
   }
-}
 
-.center {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  &__title {
+    line-height: 100%;
+    font-family: 'melodrama', sans-serif;
+    text-transform: uppercase;
+    overflow: hidden;
+    display: inline-block;
 
-  // &::after {
-  //   content: 'yes';
-  //   z-index: 999;
-  //   position: absolute;
-  //   bottom: -650px;
-  //   left: 0;
-  //   transform: translateY(70%);
-  //   width: 100%;
-  //   height: 100%;
-  //   background: url("@/assets/images/pont.svg");
-  //   background-position: center;
-  //   background-size: cover;
-  // }
-  .img {
+    .letter {
+      display: inline-block;
+      transform: translateY(100%);
+    }
+  }
+
+  &__center {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: fit-content;
+    transform: translateY(2.7vw);
+
+    &-top {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      font-size: 15vw;
+    }
+
+    &-bottom {
+      font-size: 19vw;
+      line-height: 120%;
+      margin-top: 7vw;
+    }
+  }
+
+  &__image {
     overflow-y: hidden;
 
-    .img-container {
+    &-container {
       user-select: none;
       overflow: hidden;
       position: absolute;
@@ -292,67 +306,24 @@ onMounted(() => {
       z-index: 2;
       aspect-ratio: 574 / 345;
       //aspect-ratio: 1455 / 1107;
+    }
 
-      .img-relative {
-        position: relative;
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-      }
+    &-relative {
+      position: relative;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
 
-      img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        object-position: top;
-        // aspect-ratio: 574 / 345;
-
-      }
+    &-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      object-position: top;
     }
   }
-}
-
-.title {
-  line-height: 100%;
-  font-family: 'melodrama', sans-serif;
-  text-transform: uppercase;
-  overflow: hidden;
-  display: inline-block;
-
-  .letter {
-    display: inline-block;
-    transform: translateY(100%);
-  }
-}
-
-.h1 {
-  // user-select: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: fit-content;
-  transform: translateY(2.7vw);
-
-  .top {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    // font-size: 13.688rem;
-    font-size: 15vw;
-  }
-
-  .bottom {
-    // font-size: 16.563rem;
-    font-size: 19vw;
-    line-height: 120%;
-    margin-top: 7vw;
-  }
-}
-
-.option {
-  cursor: pointer;
 }
 </style>

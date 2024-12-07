@@ -40,13 +40,19 @@ onMounted(() => {
 
   // Chargement des coins
   cornerL.onload = () => {
+    let t = 0;
     positions.forEach((y) => {
+      t++;
+      ctx.scale(t % 2 ? 1 : -1, 1);
+      console.log(t % 2 ? 1 : -1, 1);
+
+
       ctx.drawImage(
         cornerL,
         1 * window.innerWidth / 100,
         y,
-        1 * window.innerWidth / 100,
-        1 * window.innerWidth / 100
+        window.innerWidth > window.innerHeight ? 1 * window.innerWidth / 100 : 2 * window.innerHeight / 100,
+        window.innerWidth > window.innerHeight ? 1 * window.innerWidth / 100 : 2 * window.innerHeight / 100,
       );
 
       ctx.scale(-1, 1);
@@ -54,30 +60,35 @@ onMounted(() => {
         cornerL,
         -(99 * window.innerWidth / 100),
         y,
-        1 * window.innerWidth / 100,
-        1 * window.innerWidth / 100
+        window.innerWidth > window.innerHeight ? 1 * window.innerWidth / 100 : 2 * window.innerHeight / 100,
+        window.innerWidth > window.innerHeight ? 1 * window.innerWidth / 100 : 2 * window.innerHeight / 100,
       );
       ctx.scale(-1, 1);
     });
   };
 
-  // Chargement des images principales
+  // Chargement des images
   images.forEach((image) => {
+    let t = 0;
     image.onload = () => {
+      t++;
+      ctx.scale(t % 2 ? 1 : -1, 1);
+
       loadedImages++;
       if (loadedImages === images.length) {
         positions.forEach((y) => {
           for (
-            let j = 2 * window.innerWidth / 100;
-            j < window.innerWidth - 3 * window.innerWidth / 100;
-            j += 1 * window.innerWidth / 100
+            let j = window.innerWidth > window.innerHeight ? 2 * window.innerWidth / 100 : 3 * window.innerWidth / 100;
+            window.innerWidth > window.innerHeight ? j < window.innerWidth - 3 * window.innerWidth / 100 + 1 : j < window.innerWidth - 5 * window.innerWidth / 100;
+            window.innerWidth > window.innerHeight ? j += 1 * window.innerWidth / 100 : j += 2 * window.innerWidth / 100
           ) {
             ctx.drawImage(
               images[Math.round(Math.random() * 4)],
               j,
               y,
-              1 * window.innerWidth / 100,
-              1 * window.innerWidth / 100
+              window.innerWidth > window.innerHeight ? 1 * window.innerWidth / 100 : 2 * window.innerHeight / 100,
+              window.innerWidth > window.innerHeight ? 1 * window.innerWidth / 100 : 2 * window.innerHeight / 100,
+
             );
           }
         });
@@ -95,7 +106,7 @@ onMounted(() => {
 <template>
   <div class="main">
     <div class="section-full"></div>
-    <!--<canvas id="border" ref="canvas"></canvas>-->
+    <canvas id="border" ref="canvas"></canvas>
   </div>
 </template>
 
