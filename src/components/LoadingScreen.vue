@@ -1,9 +1,23 @@
 <script setup>
 import { ref, onMounted } from 'vue';
+import AnimeJs from './AnimeJs.vue';
+import anime from 'animejs/lib/anime.es.js';
 
 const canvas = ref(null);
 
+//dot animation
 onMounted(() => {
+  const dots = document.querySelectorAll('.loading__texts__text-dot');
+
+  anime({
+    targets: dots,
+    opacity: [0, 1],
+    easing: "easeInOutQuad",
+    duration: 1500,
+    delay: anime.stagger(200, { start: 0 }),
+    direction: "alternate",
+    loop: true,
+  });
 
 })
 
@@ -143,11 +157,19 @@ onMounted(() => {
 });
 </script>
 
-
-
 <template>
   <div class="main">
-    <div class="section-full"></div>
+    <div class="loading">
+      <div class="loading__container">
+        <AnimeJs />
+        <div class="loading__texts">
+          <span class="loading__texts__text-main">Chargement</span>
+          <span class="loading__texts__text-dot">.</span>
+          <span class="loading__texts__text-dot">.</span>
+          <span class="loading__texts__text-dot">.</span>
+        </div>
+      </div>
+    </div>
     <canvas id="border" ref="canvas"></canvas>
     <img class="loading__corner" src="@/assets/images/coin.png" alt="" width="210" height="210">
     <img class="loading__corner" src="@/assets/images/coin.png" alt="" width="210" height="210">
@@ -157,13 +179,31 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
+canvas,
+img {
+  z-index: -2;
+}
+
 .main {
   position: relative;
   overflow: hidden;
+  opacity: 0;
+
+  @keyframes fadeInShort {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  animation: fadeInShort 1s ease-in-out 0.5s forwards;
 
   #border {
     position: absolute;
-    z-index: 99;
+    z-index: -2;
     top: 0;
     left: 0;
     width: 100vw;
@@ -172,16 +212,68 @@ onMounted(() => {
     background: hsl(1, 90%, 95%);
   }
 
-  .section-full {
-    width: 100vh;
+  .loading {
+    width: 100vw;
     height: 100vh;
     overflow: hidden;
-    // background: #fbe9e7;
+    z-index: 999;
+
+    &__container {
+      width: 40%;
+      max-width: 700px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      height: 85%;
+      align-items: center;
+      gap: 10vh;
+      justify-content: flex-end;
+
+      @media screen and (max-width: 900px) {
+        width: 80%;
+        justify-content: center;
+        gap: 5vh;
+      }
+    }
+
+    &__texts {
+      line-height: 100%;
+      font-size: 4vw;
+      color: $color-accent;
+      font-family: 'melodrama', serif;
+      text-transform: uppercase;
+      opacity: 0;
+
+      @media screen and (max-width: 900px) {
+        font-size: 8vw;
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+
+        100% {
+          opacity: 1;
+        }
+      }
+
+      animation: fadeIn 3s ease-in-out 2s forwards;
+
+      &__text-dot {
+        opacity: 1;
+        transform-origin: bottom center;
+        display: inline-block;
+      }
+    }
   }
 
   .loading__corner {
     position: absolute;
-    z-index: 9999;
+    z-index: -2;
     aspect-ratio: 1;
     width: 15.79vw;
     height: 15.79vw;

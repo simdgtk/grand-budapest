@@ -236,7 +236,7 @@ const budapest = ref(null);
 
   &__title {
     line-height: 100%;
-    font-family: 'melodrama', sans-serif;
+    font-family: 'melodrama', serif;
     text-transform: uppercase;
     overflow: hidden;
     display: inline-block;

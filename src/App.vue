@@ -31,10 +31,10 @@ gsap.ticker.lagSmoothing(0);
 
 <template>
   <main>
-    <!--<LoadingScreen />-->
     <HeroComponent />
     <ChaptersComponent />
     <!-- <ShaderSection /> -->
+    <LoadingScreen />
     <FooterSection />
   </main>
 </template>
