@@ -1,7 +1,14 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, defineProps } from 'vue';
 import AnimeJs from './AnimeJs.vue';
 import anime from 'animejs/lib/anime.es.js';
+
+defineProps({
+  loadingMessage: {
+    type: String,
+    default: "", // Valeur par défaut
+  },
+});
 
 const canvas = ref(null);
 
@@ -170,11 +177,13 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <canvas id="border" ref="canvas"></canvas>
-    <img class="loading__corner" src="@/assets/images/coin.png" alt="" width="210" height="210">
-    <img class="loading__corner" src="@/assets/images/coin.png" alt="" width="210" height="210">
-    <img class="loading__corner" src="@/assets/images/coin.png" alt="" width="210" height="210">
-    <img class="loading__corner" src="@/assets/images/coin.png" alt="" width="210" height="210">
+    <div class="main__borders">
+      <canvas id="border" ref="canvas"></canvas>
+      <img class="loading__corner" src="@/assets/images/coin.png" alt="" width="210" height="210">
+      <img class="loading__corner" src="@/assets/images/coin.png" alt="" width="210" height="210">
+      <img class="loading__corner" src="@/assets/images/coin.png" alt="" width="210" height="210">
+      <img class="loading__corner" src="@/assets/images/coin.png" alt="" width="210" height="210">
+    </div>
   </div>
 </template>
 
@@ -217,6 +226,25 @@ img {
     height: 100vh;
     overflow: hidden;
     z-index: 999;
+    opacity: 1;
+
+    @keyframes zoomIn {
+      0% {
+        opacity: 1;
+        transform: scale(1.3);
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    animation: zoomIn 4.5s ease-out forwards;
 
     &__container {
       width: 40%;
@@ -295,7 +323,7 @@ img {
     &:nth-of-type(2) {
       left: 1vw;
       bottom: 4vh;
-      transform: translateY(12.8%) translateX(-6.7%) scale(1, 1);
+      transform: translateY(13%) translateX(-6.7%) scale(1, 1);
     }
 
     &:nth-of-type(3) {

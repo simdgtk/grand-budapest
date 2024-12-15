@@ -6,7 +6,7 @@
         <div class="text-image first" @mouseleave="chapter = null">
           <div class="img-container">
             <img class="img" ref="first" src="@/assets/images/chap1.webp" alt="Chapter 1 Grand Budapest hotel"
-              width="auto" height="499" @mouseover="chapter = 1; animation(1)" />
+              loading="lazy" width="auto" height="499" @mouseover="chapter = 1; animation(1)" />
           </div>
           <h3 :class="chapter !== 1 ? 'none' : ''">Chapitre 1.</h3>
           <p :class="chapter !== 1 ? 'none paragraph1' : 'paragraph1'">C'est une bonne situation ça scribe ? Vous savez
@@ -17,7 +17,7 @@
       <div class="text-image second" @mouseleave="chapter = null">
         <div class="img-container">
           <img class="img" ref="second" src="@/assets/images/chap2.webp" alt="Chapter 2 Grand Budapest hotel"
-            width="auto" height="254" @mouseover="chapter = 2; animation(2)" />
+            loading="lazy" width="auto" height="254" @mouseover="chapter = 2; animation(2)" />
         </div>
         <h3 :class="chapter !== 2 ? 'none' : ''">Chapitre 2.</h3>
         <p :class="chapter !== 2 ? 'none paragraph2' : 'paragraph2'">Lorem ipsum dolor sit, amet consectetur adipisicing
@@ -30,9 +30,9 @@
       <div class="text-image third" @mouseleave="chapter = null">
         <div class="img-container img-draggable">
           <div class="images" ref="third">
-            <img class="img" src="@/assets/images/chap3.webp" alt="Chapter 3 Grand Budapest hotel" width="auto"
-              height="443" @mouseover="chapter = 3; animation(3)" />
-            <img class="img2" ref="draggable" src="@/assets/images/chap3_boy_with_apple.webp"
+            <img class="img" src="@/assets/images/chap3.webp" alt="Chapter 3 Grand Budapest hotel" loading="lazy"
+              width="auto" height="443" @mouseover="chapter = 3; animation(3)" />
+            <img class="img2" ref="draggable" src="@/assets/images/chap3_boy_with_apple.webp" loading="lazy"
               alt="Boy with Apple, fictional painting" width="auto" height="116" />
           </div>
         </div>
@@ -46,8 +46,8 @@
       </div>
       <div class="text-image fourth" @mouseleave="chapter = null">
         <div class="img-container">
-          <img class="img" ref="fourth" src="@/assets/images/chap4.webp" alt="Chapter 4 Grand Budapest hotel"
-            width="auto" height="332" @mouseover="chapter = 4; animation(4)" />
+          <img class="img" ref="fourth" src="@/assets/images/chap4.webp" loading="lazy"
+            alt="Chapter 4 Grand Budapest hotel" width="auto" height="332" @mouseover="chapter = 4; animation(4)" />
         </div>
         <h3 :class="chapter !== 4 ? 'none' : ''">Chapitre 4.</h3>
         <p :class="chapter !== 4 ? 'none paragraph4' : 'paragraph4'">Lorem ipsum dolor sit, amet consectetur adipisicing
@@ -59,8 +59,8 @@
       </div>
       <div class="text-image fifth" @mouseleave="chapter = null">
         <div class="img-container">
-          <img class="img" ref="fifth" src="@/assets/images/chap5.webp" alt="Chapter 5 Grand Budapest hotel"
-            width="auto" height="332" @mouseover="chapter = 5; animation(5)" />
+          <img class="img" ref="fifth" src="@/assets/images/chap5.webp" loading="lazy"
+            alt="Chapter 5 Grand Budapest hotel" width="auto" height="332" @mouseover="chapter = 5; animation(5)" />
         </div>
         <h3 :class="chapter !== 5 ? 'none' : ''">Chapitre 5.</h3>
         <p :class="chapter !== 5 ? 'none paragraph5' : 'paragraph5'">Lorem ipsum dolor sit amet consectetur, adipisicing

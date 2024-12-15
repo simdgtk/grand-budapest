@@ -8,8 +8,8 @@ onMounted(() => {
     targets: paths,
     strokeDashoffset: [anime.setDashoffset, 0],
     easing: "easeInOutSine",
-    duration: 2000,
-    delay: anime.stagger(150),
+    duration: 800,
+    delay: anime.stagger(100),
   });
 });
 </script>
@@ -19,12 +19,7 @@ onMounted(() => {
     <div class="animejs__container">
       <div class="animejs__box line-drawing">
         <svg width="1368" height="723" viewBox="0 0 1368 723" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M676.348 618.762L671.253 597.964" stroke="#DF635D" stroke-width="2" />
-          <path d="M684.804 618.761L684.804 597.649" stroke="#DF635D" stroke-width="2" />
-          <path d="M691.814 618.762L696.909 597.964" stroke="#DF635D" stroke-width="2" />
-          <path d="M709.358 618.632L720.441 597.675" stroke="#DF635D" stroke-width="2" />
-          <path d="M700.361 618.853L708.26 597.663" stroke="#DF635D" stroke-width="2" />
-          <path d="M667.636 618.853L659.736 597.663" stroke="#DF635D" stroke-width="2" />
+
           <path d="M1.36963 286.816V721.885L1366.72 721.864V286.816H1.36963Z" stroke="#DF635D" stroke-width="2" />
           <path d="M433.926 203.849V721.885L934.163 721.86V203.849H433.926Z" stroke="#DF635D" stroke-width="2" />
           <path d="M68.772 722.004V202.866H154.905V721.881" stroke="#DF635D" stroke-width="2" />
@@ -42,7 +37,6 @@ onMounted(() => {
           <path d="M664.775 702.389V635.545H703.192V702.389" stroke="#DF635D" stroke-width="2" />
           <path d="M649.96 618.7V702.389H717.976V618.7H649.96Z" stroke="#DF635D" stroke-width="2" />
           <path d="M650.046 618.836L635.167 597.557H732.447L717.843 618.836" stroke="#DF635D" stroke-width="2" />
-          <path d="M658.554 618.632L647.472 597.675" stroke="#DF635D" stroke-width="2" />
           <path
             d="M684.276 545.281C650.447 545.281 644.072 569.002 644.072 569.002L651.742 569.144C651.742 569.144 659.156 551.233 684.276 551.233C709.395 551.233 717.826 569.144 717.826 569.144H725.109C725.109 569.144 718.105 545.282 684.276 545.281Z"
             stroke="#DF635D" stroke-width="2" />
@@ -60,6 +54,25 @@ onMounted(() => {
             d="M1247.14 145.935V113.689C1247.14 113.689 1247.14 104.641 1256.38 104.641C1265.62 104.641 1265.62 113.689 1265.62 113.689V145.935"
             stroke="#DF635D" stroke-width="2" />
           <path d="M1256.22 104.497V23.4561" stroke="#DF635D" stroke-width="2" />
+          <!-- Barres -->
+          <!-- G3 -->
+          <path d="M658.554 618.632L647.472 597.675" stroke="#DF635D" stroke-width="2" />
+          <!-- D3 -->
+          <path d="M709.358 618.632L720.441 597.675" stroke="#DF635D" stroke-width="2" />
+
+          <!-- G2 -->
+          <path d="M667.636 618.853L659.736 597.663" stroke="#DF635D" stroke-width="2" />
+          <!-- D2 -->
+          <path d="M700.361 618.853L708.26 597.663" stroke="#DF635D" stroke-width="2" />
+
+          <!-- G1 -->
+          <path d="M676.348 618.762L671.253 597.964" stroke="#DF635D" stroke-width="2" />
+          <!-- D1 -->
+          <path d="M691.814 618.762L696.909 597.964" stroke="#DF635D" stroke-width="2" />
+
+          <!-- centre -->
+          <path d="M684.804 618.761L684.804 597.649" stroke="#DF635D" stroke-width="2" />
+          <!-- fin barres -->
           <path d="M686.913 92.4604L614.419 203.963L753.717 203.801L686.913 92.4604Z" stroke="#DF635D"
             stroke-width="2" />
           <path d="M444.392 204.073L528.887 158.26H839.951L924.624 203.895" stroke="#DF635D" stroke-width="2" />
@@ -104,25 +117,28 @@ onMounted(() => {
 <style scoped lang="scss">
 .animejs {
   width: 100%;
+
   &__box {
     svg {
       width: 100%;
       height: auto;
     }
 
-.text {
-  opacity: 0;
-  @keyframes fadeIn {
-    0% {
+    .text {
       opacity: 0;
-    }
 
-    100% {
-      opacity: 1;
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+
+        100% {
+          opacity: 1;
+        }
+      }
+
+      animation: fadeIn 3s ease-in-out 2s forwards;
     }
-  }
-  animation: fadeIn 3s ease-in-out 2s forwards;
-}
   }
 }
 </style>

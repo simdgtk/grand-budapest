@@ -3,6 +3,7 @@ import HeroComponent from './components/HeroComponent.vue';
 import ChaptersComponent from './components/ChaptersComponent.vue';
 import ShaderSection from './components/ShaderSection.vue';
 import { gsap } from 'gsap';
+import { onMounted, ref } from 'vue';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,28 +15,38 @@ const lenis = new Lenis({
   lerp: 0.07,
 });
 
-// lenis.on('scroll', (e) => {
-//   console.log(e);
-// });
+
 lenis.on('scroll', ScrollTrigger.update);
 
-// Add Lenis's requestAnimationFrame (raf) method to GSAP's ticker
-// This ensures Lenis's smooth scroll animation updates on each GSAP tick
 gsap.ticker.add((time) => {
-  lenis.raf(time * 1000); // Convert time from seconds to milliseconds
+  lenis.raf(time * 1000);
 });
 
-// Disable lag smoothing in GSAP to prevent any delay in scroll animations
 gsap.ticker.lagSmoothing(0);
+
+// loading state
+const isLoading = ref(true);
+const lift = ref(false);
+onMounted(() => {
+  setTimeout(() => {
+    lift.value = true;
+  }, 4000)
+  setTimeout(() => {
+    isLoading.value = false;
+  }, 5000);
+});
+
 </script>
 
 <template>
   <main>
-    <HeroComponent />
-    <ChaptersComponent />
-    <!-- <ShaderSection /> -->
-    <LoadingScreen />
-    <FooterSection />
+    <LoadingScreen v-if="isLoading" :lift="lift" />
+    <div class="" v-else>
+      <HeroComponent />
+      <ChaptersComponent />
+      <!-- <ShaderSection /> -->
+      <FooterSection />
+    </div>
   </main>
 </template>
 
