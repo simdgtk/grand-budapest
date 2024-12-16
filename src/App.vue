@@ -40,12 +40,13 @@ onMounted(() => {
 
 <template>
   <main>
-    <LoadingScreen v-if="isLoading" :lift="lift" />
-    <div class="" v-else>
-      <HeroComponent />
-      <ChaptersComponent />
-      <!-- <ShaderSection /> -->
-      <FooterSection />
+    <!-- <LoadingScreen v-if="isLoading" :lift="lift" /> -->
+    <!-- v-else -->
+    <div class="">
+      <!-- <HeroComponent /> -->
+      <!-- <ChaptersComponent /> -->
+      <ShaderSection />
+      <!-- <FooterSection /> -->
     </div>
   </main>
 </template>
