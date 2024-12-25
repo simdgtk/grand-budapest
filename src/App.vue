@@ -11,18 +11,18 @@ gsap.registerPlugin(ScrollTrigger);
 import Lenis from 'lenis';
 import LoadingScreen from './components/LoadingScreen.vue';
 import FooterSection from './components/FooterSection.vue';
-const lenis = new Lenis({
-  lerp: 0.07,
-});
+// const lenis = new Lenis({
+//   lerp: 0.07,
+// });
 
 
-lenis.on('scroll', ScrollTrigger.update);
+// lenis.on('scroll', ScrollTrigger.update);
 
-gsap.ticker.add((time) => {
-  lenis.raf(time * 1000);
-});
+// gsap.ticker.add((time) => {
+//   lenis.raf(time * 1000);
+// });
 
-gsap.ticker.lagSmoothing(0);
+// gsap.ticker.lagSmoothing(0);
 
 // loading state
 const isLoading = ref(true);

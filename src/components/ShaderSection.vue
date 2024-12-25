@@ -1,65 +1,87 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import * as THREE from 'three';
+import vertexShader from '@/assets/shaders/image/vertex.glsl';
+import fragmentShader from '@/assets/shaders/image/fragment.glsl';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 
 const containerRef = ref(null);
 
 onMounted(() => {
   if (containerRef.value) {
-    // Scène, caméra, rendu Three.js
     const scene = new THREE.Scene();
+    const clock = new THREE.Clock();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     containerRef.value.appendChild(renderer.domElement);
 
-    const material = new THREE.ShaderMaterial({
-      vertexShader: `
-        void main() {
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-        }
-      `,
-      fragmentShader: `
-        void main() {
-          gl_FragColor = vec4(1.0, 1.0, 0.0, 1.0); // Couleur verte
-        }
-      `,
+    // Matériau personnalisé avec shaders
+    const material = new THREE.RawShaderMaterial({
+      vertexShader,
+      fragmentShader,
+      uniforms: {
+        u_time: { value: 0.0 },
+        u_mouse: { value: new THREE.Vector2() },
+        u_resolution: {
+          type: "v2",
+          value: new THREE.Vector2(window.innerWidth, window.innerHeight)
+            .multiplyScalar(window.devicePixelRatio)
+        },
+      },
     });
 
+    material.uniforms.u_resolution.value.set(window.innerWidth, window.innerHeight);
+    // Géométrie et ajout à la scène
     const geometry = new THREE.PlaneGeometry(3, 3);
-    const sphere = new THREE.Mesh(geometry, material);
-    scene.add(sphere);
+    const planeMesh = new THREE.Mesh(geometry, material);
+    scene.add(planeMesh);
 
     camera.position.z = 5;
 
-    function animate() {
+    // Gestion des événements de la souris
+    window.addEventListener('mousemove', (event) => {
+      material.uniforms.u_mouse.value.set(event.clientX, window.innerHeight - event.clientY);
+    });
+
+    // Gestion du redimensionnement de la fenêtre
+    const handleResize = () => {
+      const { innerWidth, innerHeight } = window;
+      renderer.setSize(innerWidth, innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.outputEncoding = THREE.sRGBEncoding;
+      camera.aspect = innerWidth / innerHeight;
+      camera.updateProjectionMatrix();
+      material.uniforms.u_resolution.value.set(innerWidth, innerHeight);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Post-traitement avec EffectComposer
+    const composer = new EffectComposer(renderer);
+    const renderPass = new RenderPass(scene, camera);
+    composer.addPass(renderPass);
+
+    // Animation
+    const animate = () => {
+      material.uniforms.u_time.value += clock.getDelta();
       requestAnimationFrame(animate);
+      composer.render();
+    };
 
-      // sphere.rotation.x += 0.01;
-      // sphere.rotation.y += 0.01;
-
-      renderer.render(scene, camera);
-    }
     animate();
   }
 });
 </script>
 
 <template>
-  <!-- <div ref="containerRef" class="section"> -->
-    <div class="main-grid" ref="containerRef">
-      <!-- Le rendu Three.js sera injecté ici -->
-    </div>
-  <!-- </div> -->
+  <div class="main-grid" ref="containerRef">
+    <!-- Le rendu Three.js sera injecté ici -->
+  </div>
 </template>
 
 <style scoped lang="scss">
-// .section {
-//   margin: 0;
-//   width: 100vw;
-//   height: 100vh;
-// }
-
 .main-grid {
   width: 100vw;
   height: 100vh;
