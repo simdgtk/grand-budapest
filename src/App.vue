@@ -11,6 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 import Lenis from 'lenis';
 import LoadingScreen from './components/LoadingScreen.vue';
 import FooterSection from './components/FooterSection.vue';
+import ImageSequenceSection from './components/ImageSequenceSection.vue';
 const lenis = new Lenis({
   lerp: 0.07,
 });
@@ -41,10 +42,11 @@ onMounted(() => {
 <template>
   <main>
     <LoadingScreen v-if="isLoading" :lift="lift" />
-    <div class="" v-else>
+    <div v-else>
       <HeroComponent />
       <ChaptersComponent />
       <!-- <ShaderSection /> -->
+      <ImageSequenceSection />
       <FooterSection />
     </div>
   </main>

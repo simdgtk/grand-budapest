@@ -12,6 +12,7 @@
 <style scoped lang="scss">
 .section {
   margin: 25rem 0;
+  margin-bottom: 1rem;
 }
 
 .main-grid {
