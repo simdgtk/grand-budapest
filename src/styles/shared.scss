@@ -37,3 +37,22 @@ $color-secondary: #B29B98;
 }
 
 // general styles
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3rem;
+  text-decoration-skip-ink: none;
+}
+
+cite {
+  font-style: oblique;
+}
+
+.char {
+  clip-path: polygon(-9% 0, 195% 0, 196% 100%, -8% 200%);
+}
+
+p {
+  line-height: 135%;
+}

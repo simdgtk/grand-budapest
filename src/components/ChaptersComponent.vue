@@ -9,9 +9,7 @@
               loading="lazy" width="auto" height="499" @mouseover="chapter = 1; animation(1)" />
           </div>
           <h3 :class="chapter !== 1 ? 'none' : ''">Chapitre 1.</h3>
-          <p :class="chapter !== 1 ? 'none paragraph1' : 'paragraph1'">C'est une bonne situation ça scribe ? Vous savez
-            je ne pense pas moi que il y ait de bonnes ou de mauvaises situations. Si je devais résumer ma vie je dirais
-            que c'est avant tout des rencontres, des.</p>
+          <p :class="chapter !== 1 ? 'none paragraph1' : 'paragraph1'">Le premier chapitre</p>
         </div>
       </div>
       <div class="text-image second" @mouseleave="chapter = null">
@@ -20,12 +18,9 @@
             loading="lazy" width="auto" height="254" @mouseover="chapter = 2; animation(2)" />
         </div>
         <h3 :class="chapter !== 2 ? 'none' : ''">Chapitre 2.</h3>
-        <p :class="chapter !== 2 ? 'none paragraph2' : 'paragraph2'">Lorem ipsum dolor sit, amet consectetur adipisicing
-          elit. Excepturi
-          voluptates,
-          tempore esse exercitationem
-          ipsum alias vel porro repellendus odio aliquam fugit unde eum suscipit soluta temporibus laborum quos officiis
-          aperiam.</p>
+        <p :class="chapter !== 2 ? 'none paragraph2' : 'paragraph2'">1932, Monsieur Gustave est le concierge du très
+          prestigieux Hotel le Grand Budapest et il embauche Zéro, ayant immigré à cause de la guerre, comme lobby-boy.
+          La guerre se prépare et madame D., cliente de longue date de l'hôtel </p>
       </div>
       <div class="text-image third" @mouseleave="chapter = null">
         <div class="img-container img-draggable">
@@ -149,10 +144,6 @@ const chapter = ref(null);
 
 .section {
   margin-top: 1rem;
-}
-
-p {
-  line-height: 135%;
 }
 
 h3,

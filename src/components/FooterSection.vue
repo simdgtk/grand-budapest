@@ -1,8 +1,5 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import { gsap } from "gsap";
-import SplitType from 'split-type';
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const hat = ref(null);
 const mendls = ref(null);
@@ -103,26 +100,6 @@ onMounted(() => {
   });
 });
 
-// gsap
-gsap.registerPlugin(ScrollTrigger);
-onMounted(() => {
-  const splittedText = new SplitType(".footer__text", { types: 'words, chars' });
-  gsap.from(
-    splittedText.chars,
-    {
-      y: '100%',
-      ease: 'power3.inOut',
-      stagger: {
-        each: 0.002,
-      },
-      scrollTrigger: {
-        trigger: footer.value,
-        start: "top center",
-        end: "top center",
-      },
-    }
-  );
-})
 </script>
 
 
@@ -138,21 +115,24 @@ onMounted(() => {
         <div class="footer__text">
           <div class="footer__paragraph">
             <h3>Pourquoi ce site ?</h3>
-            <p>Gustave H., éminent concierge et réceptionniste, fait visiter l’hôtel à Zero, son
-              lobby-boy.
-              S’ensuit
-              Gustave H., éminent concierge et réceptionniste fait visiter l’hôtel à Zero, son lobby-boy.
-              S’ensuitGustave
-              H., éminent concierge et réceptionniste fait visiter l’hôtel à Zero, son lobby-boy. S’ensuitGustave H.</p>
+            <p>C'était surtout un prétexte, je voulais faire un site pour m'entraîner aux animations GSAP et autres
+              effets JS, avec de belles ressources.<cite>The Grand Budapest Hotel</cite>,
+              c'est aussi un film que j'aime beaucoup, pour son histoire, ses acteurs, et son esthétique. Vous pouvez
+              retrouver mon portfolio sur <a href="https://simondaguetkargl.fr/" target="_blank"
+                rel="noopener">simondaguetkargl.fr</a>. N'hésitez pas à me faire des retours sur le site, vous pouvez
+              trouver
+              <a href="https://github.com/simdgtk/grand-budapest/" target="_blank" rel="noopener">le code sur
+                github</a>.
+            </p>
           </div>
           <div class="footer__paragraph">
-            <h3>Pourquoi ce site ?</h3>
-            <p>Gustave H., éminent concierge et réceptionniste, fait visiter l’hôtel à Zero, son
-              lobby-boy.
-              S’ensuit
-              Gustave H., éminent concierge et réceptionniste fait visiter l’hôtel à Zero, son lobby-boy.
-              S’ensuitGustave
-              H., éminent concierge et réceptionniste fait visiter l’hôtel à Zero, son lobby-boy. S’ensuitGustave H.</p>
+            <h3>Crédits</h3>
+            <p>Ce site s'inspire de l'univers visuel du film <cite>The Grand Budapest Hotel</cite>, réalisé par Wes
+              Anderson.
+              Les images sont soit tirées du film soit des éléments 3D / 2D que j'ai reproduits pour rendre hommage à
+              son esthétique singulière et servir les besoins du site. Les crédits artistiques vont donc
+              aux équipes du film, et particulièrement à <a href="https://www.annieatkins.com/" target="_blank" rel="noopener">Annie
+                Atkins</a>, graphiste principale.</p>
           </div>
         </div>
         <div class="footer__image-container">
