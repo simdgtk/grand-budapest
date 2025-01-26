@@ -130,8 +130,9 @@ onMounted(() => {
             <p>Ce site s'inspire de l'univers visuel du film <cite>The Grand Budapest Hotel</cite>, réalisé par Wes
               Anderson.
               Les images sont soit tirées du film soit des éléments 3D / 2D que j'ai reproduits pour rendre hommage à
-              son esthétique singulière et servir les besoins du site. Les crédits artistiques vont donc
-              aux équipes du film, et particulièrement à <a href="https://www.annieatkins.com/" target="_blank" rel="noopener">Annie
+              son esthétique et servir les besoins du site. Les crédits artistiques vont donc
+              aux équipes du film, et particulièrement à <a href="https://www.annieatkins.com/" target="_blank"
+                rel="noopener">Annie
                 Atkins</a>, graphiste principale.</p>
           </div>
         </div>
@@ -159,6 +160,7 @@ onMounted(() => {
   position: relative;
   padding: 5rem 0;
   margin: 12rem 0;
+  margin-bottom: 5rem;
 
   &__text {
     display: flex;

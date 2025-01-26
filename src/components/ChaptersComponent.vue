@@ -8,8 +8,9 @@
             <img class="img" ref="first" src="@/assets/images/chap1.webp" alt="Chapter 1 Grand Budapest hotel"
               loading="lazy" width="auto" height="499" @mouseover="chapter = 1; animation(1)" />
           </div>
-          <h3 :class="chapter !== 1 ? 'none' : ''">Chapitre 1.</h3>
-          <p :class="chapter !== 1 ? 'none paragraph1' : 'paragraph1'">Le premier chapitre</p>
+          <h3 :class="chapter !== 1 ? 'none' : ''">Retour en arrière</h3>
+          <p :class="chapter !== 1 ? 'none paragraph1' : 'paragraph1'">Le film débute sur une fille, lisant à sa
+            sépulture un des livres d'un auteur décédé. L'auteur y raconte l'histoire du grand Budapest Hôtel, qu'il a découvert dans sa jeunesse. Il l'a trouvé usé par le temps et il va y rencontrer son propriétaire Zero Moustafa, qui lui raconte comment, fût un temps, l'hôtel était splendide et important.</p>
         </div>
       </div>
       <div class="text-image second" @mouseleave="chapter = null">
@@ -17,10 +18,11 @@
           <img class="img" ref="second" src="@/assets/images/chap2.webp" alt="Chapter 2 Grand Budapest hotel"
             loading="lazy" width="auto" height="254" @mouseover="chapter = 2; animation(2)" />
         </div>
-        <h3 :class="chapter !== 2 ? 'none' : ''">Chapitre 2.</h3>
-        <p :class="chapter !== 2 ? 'none paragraph2' : 'paragraph2'">1932, Monsieur Gustave est le concierge du très
-          prestigieux Hotel le Grand Budapest et il embauche Zéro, ayant immigré à cause de la guerre, comme lobby-boy.
-          La guerre se prépare et madame D., cliente de longue date de l'hôtel </p>
+        <h3 :class="chapter !== 2 ? 'none' : ''">Chapitre 1.</h3>
+        <p :class="chapter !== 2 ? 'none paragraph2' : 'paragraph2'">1932, Monsieur Gustave, le concierge du très
+          prestigieux hôtel le Grand Budapest embauche Zéro, un jeune ayant immigré à cause de la guerre, comme
+          lobby-boy.
+          La guerre se prépare et madame D., cliente de longue date de l'hôtel préssent qu'elle va mourir.</p>
       </div>
       <div class="text-image third" @mouseleave="chapter = null">
         <div class="img-container img-draggable">
@@ -31,37 +33,34 @@
               alt="Boy with Apple, fictional painting" width="auto" height="116" />
           </div>
         </div>
-        <h3 :class="chapter !== 3 ? 'none' : ''" style="margin-top: 0.9rem;">Chapitre 3.</h3>
-        <p :class="chapter !== 3 ? 'none paragraph3' : 'paragraph3'">Lorem ipsum dolor sit, amet consectetur adipisicing
-          elit. Excepturi voluptates,
-          tempore esse exercitationem
-          ipsum alias vel porro repellendus odio aliquam fugit unde eum suscipit soluta temporibus laborum quos
-          officiis
-          aperiam.</p>
+        <h3 :class="chapter !== 3 ? 'none' : ''" style="margin-top: 0.9rem;">Chapitre 2.</h3>
+        <p :class="chapter !== 3 ? 'none paragraph3' : 'paragraph3'">Les frontières
+          se ferment et la guerre débute.
+          Mr Gustave hérite d'un tableau de madame D., <cite>Le garçon à la pomme</cite>. D'une valeur
+          inestimable, Mr Gustave est contraint de le voler pour échapper à Dmitri, le fils avide de madame D.</p>
       </div>
       <div class="text-image fourth" @mouseleave="chapter = null">
         <div class="img-container">
           <img class="img" ref="fourth" src="@/assets/images/chap4.webp" loading="lazy"
             alt="Chapter 4 Grand Budapest hotel" width="auto" height="332" @mouseover="chapter = 4; animation(4)" />
         </div>
-        <h3 :class="chapter !== 4 ? 'none' : ''">Chapitre 4.</h3>
-        <p :class="chapter !== 4 ? 'none paragraph4' : 'paragraph4'">Lorem ipsum dolor sit, amet consectetur adipisicing
-          elit. Excepturi voluptates,
-          tempore esse exercitationem
-          ipsum alias vel porro repellendus odio aliquam fugit unde eum suscipit soluta temporibus laborum quos
-          officiis
-          aperiam.</p>
+        <h3 :class="chapter !== 4 ? 'none' : ''">Chapitre 3.</h3>
+        <p :class="chapter !== 4 ? 'none paragraph4' : 'paragraph4'">Dmitri accuse Gustave d'avoir empoisonné sa mère.
+          Gustave est envoyé en prison et s'en sort avec l'aide de Zero et sa fiancée, Agatha, qui travaille chez
+          Mendl's, la pâtisserie d'excellence de la région et qui a l'idée de cacher ciseaux et maillet dans ses
+          gâteaux.</p>
       </div>
       <div class="text-image fifth" @mouseleave="chapter = null">
         <div class="img-container">
           <img class="img" ref="fifth" src="@/assets/images/chap5.webp" loading="lazy"
             alt="Chapter 5 Grand Budapest hotel" width="auto" height="332" @mouseover="chapter = 5; animation(5)" />
         </div>
-        <h3 :class="chapter !== 5 ? 'none' : ''">Chapitre 5.</h3>
-        <p :class="chapter !== 5 ? 'none paragraph5' : 'paragraph5'">Lorem ipsum dolor sit amet consectetur, adipisicing
-          elit. Atque, illum, necessitatibus recusandae alias quasi
-          fugit omnis mollitia ipsam cupiditate laboriosam iusto fuga porro itaque. Voluptates voluptatum labore
-          reiciendis a recusandae.</p>
+        <h3 :class="chapter !== 5 ? 'none' : ''">Chapitres 4 et 5</h3>
+        <p :class="chapter !== 5 ? 'none paragraph5' : 'paragraph5'">Gustave s'évade mais doit encore affronter Dmitri,
+          devenu personnage important du régime fasciste nouvellement en place. Finalement, un second testament est
+          découvert, au dos du tableau, à n'ouvrir et n'executer qu'en cas de mort par décès de madame D.. Il lègue
+          l'entièreté de sa fortune à Gustave, ainsi que le grand Budapest Hôtel. Gustave finira tué par les soldats du
+          régime peu après et l'hôtel reviendra à Zero.</p>
       </div>
     </div>
   </div>

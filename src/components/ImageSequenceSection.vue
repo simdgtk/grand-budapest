@@ -58,43 +58,9 @@ onMounted(() => {
       <img class="image-sequence__final-image-img" src="@/assets/image_sequence/0100.webp" alt="">
     </div> -->
   </div>
-  <!-- <div class="test">
-  </div> -->
 </template>
 
 <style lang="scss">
-// html {
-//   height: 100vh;
-// }
-
-// .image-sequence {
-//   height: 200vh;
-//   display: flex;
-//   justify-content: center;
-//   max-width: 100%;
-//   overflow: hidden;
-//   position: relative;
-
-//   &__canvas {
-//     position: sticky !important;
-//     width: 960px;
-//     height: 540px;
-//     // height: 100vh;
-//     // margin: 0 auto;
-//     // transform: translate(25%, 0%);
-//     // max-width: 100vw;
-//     // max-height: 100vh;
-//     background-position: center;
-//     mask:
-//       linear-gradient(to right, transparent 2%, #fff 7% 70%, transparent 95%),
-//       linear-gradient(to left, transparent 2%, #fff 7% 70%, transparent 95%);
-//     mask-size: 110% 110%;
-//     mask-position: center;
-//     mask-repeat: no-repeat;
-//     mask-composite: intersect;
-
-//   }
-// }
 .image-sequence {
   position: relative;
 }

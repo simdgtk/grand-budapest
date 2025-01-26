@@ -257,7 +257,7 @@ img {
       flex-direction: column;
       height: 85%;
       align-items: center;
-      gap: 10vh;
+      gap: 15vh;
       justify-content: flex-end;
 
       @media screen and (max-width: 900px) {
