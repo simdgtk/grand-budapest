@@ -1,12 +1,13 @@
 <script setup>
 import { ref, onMounted } from 'vue';
+import { useElementVisibility } from '@vueuse/core'
 
 const hat = ref(null);
 const mendls = ref(null);
 const footer = ref(null);
 
 onMounted(() => {
-
+  const hatIsVisible = useElementVisibility(hat);
   // Initialisation des images
   const hat0 = new Image();
   hat0.src = new URL(`@/assets/images/hat/lobbyhat0.webp`, import.meta.url).href;
@@ -90,10 +91,10 @@ onMounted(() => {
       hatIndex = (hatIndex + 1) % hats.length;
       mendlsIndex = (mendlsIndex + 1) % mendlsList.length;
 
-      if (hat.value) {
+      if (hat.value && hatIsVisible.value) {
         hat.value.src = hats[hatIndex].src;
       }
-      if (mendls.value) {
+      if (mendls.value && hatIsVisible.value) {
         mendls.value.src = mendlsList[mendlsIndex].src;
       }
     }, 15);

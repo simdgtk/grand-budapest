@@ -154,7 +154,6 @@ onMounted(() => {
             scrollTrigger: {
               trigger: container.value,
               start: `${bottomValue} center`,
-              markers: true,
               end: `bottom+=${window.innerHeight}px end`,
               scrub: 0.8,
             }
