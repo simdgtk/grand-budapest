@@ -1,103 +1,25 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import { useElementVisibility } from '@vueuse/core'
 
-const hat = ref(null);
-const mendls = ref(null);
 const footer = ref(null);
 
 onMounted(() => {
-  const hatIsVisible = useElementVisibility(hat);
-  // Initialisation des images
-  const hat0 = new Image();
-  hat0.src = new URL(`@/assets/images/hat/lobbyhat0.webp`, import.meta.url).href;
-
-  const hat1 = new Image();
-  hat1.src = new URL(`@/assets/images/hat/lobbyhat1.webp`, import.meta.url).href;
-
-  const hat2 = new Image();
-  hat2.src = new URL(`@/assets/images/hat/lobbyhat2.webp`, import.meta.url).href;
-
-  const hat3 = new Image();
-  hat3.src = new URL(`@/assets/images/hat/lobbyhat3.webp`, import.meta.url).href;
-
-  const hat4 = new Image();
-  hat4.src = new URL(`@/assets/images/hat/lobbyhat4.webp`, import.meta.url).href;
-
-  const hat5 = new Image();
-  hat5.src = new URL(`@/assets/images/hat/lobbyhat5.webp`, import.meta.url).href;
-
-  const hat6 = new Image();
-  hat6.src = new URL(`@/assets/images/hat/lobbyhat6.webp`, import.meta.url).href;
-
-  const hat7 = new Image();
-  hat7.src = new URL(`@/assets/images/hat/lobbyhat7.webp`, import.meta.url).href;
-
-  const hat8 = new Image();
-  hat8.src = new URL(`@/assets/images/hat/lobbyhat8.webp`, import.meta.url).href;
-
-  const hat9 = new Image();
-  hat9.src = new URL(`@/assets/images/hat/lobbyhat9.webp`, import.meta.url).href;
-
-  const hats = [hat0, hat1, hat2, hat3, hat4, hat5, hat6, hat7, hat8, hat9];
-
-  const mendls0 = new Image();
-  mendls0.src = new URL(`@/assets/images/cap/mendls0.webp`, import.meta.url).href;
-
-  const mendls1 = new Image();
-  mendls1.src = new URL(`@/assets/images/cap/mendls1.webp`, import.meta.url).href;
-
-  const mendls2 = new Image();
-  mendls2.src = new URL(`@/assets/images/cap/mendls2.webp`, import.meta.url).href;
-
-  const mendls3 = new Image();
-  mendls3.src = new URL(`@/assets/images/cap/mendls3.webp`, import.meta.url).href;
-
-  const mendls4 = new Image();
-  mendls4.src = new URL(`@/assets/images/cap/mendls4.webp`, import.meta.url).href;
-
-  const mendls5 = new Image();
-  mendls5.src = new URL(`@/assets/images/cap/mendls5.webp`, import.meta.url).href;
-
-  const mendls6 = new Image();
-  mendls6.src = new URL(`@/assets/images/cap/mendls6.webp`, import.meta.url).href;
-
-  const mendls7 = new Image();
-  mendls7.src = new URL(`@/assets/images/cap/mendls7.webp`, import.meta.url).href;
-
-  const mendls8 = new Image();
-  mendls8.src = new URL(`@/assets/images/cap/mendls8.webp`, import.meta.url).href;
-
-  const mendls9 = new Image();
-  mendls9.src = new URL(`@/assets/images/cap/mendls9.webp`, import.meta.url).href;
-
-  const mendlsList = [mendls0, mendls1, mendls2, mendls3, mendls4, mendls5, mendls6, mendls7, mendls8, mendls9];
-
-  if (hat.value) {
-    hat.value.src = hats[0].src;
-  }
-  if (mendls.value) {
-    mendls.value.src = mendlsList[0].src;
-  }
-
   let hatIndex = 0;
-  let mendlsIndex = 0;
-
   let timeout;
+  const allHats = document.getElementsByClassName("footer__image--hat");
+  const allMendls = document.getElementsByClassName("footer__image--mendls");
+
 
   window.addEventListener('wheel', () => {
     clearTimeout(timeout);
     timeout = setTimeout(() => {
-      hatIndex = (hatIndex + 1) % hats.length;
-      mendlsIndex = (mendlsIndex + 1) % mendlsList.length;
+      hatIndex = (hatIndex + 1) % allHats.length;
+      allHats[hatIndex].classList.add("visible")
+      allMendls[hatIndex].classList.add("visible")
+      allHats[hatIndex === 0 ? allHats.length - 1 : hatIndex - 1].classList.remove("visible")
+      allMendls[hatIndex === 0 ? allHats.length - 1 : hatIndex - 1].classList.remove("visible")
 
-      if (hat.value && hatIsVisible.value) {
-        hat.value.src = hats[hatIndex].src;
-      }
-      if (mendls.value && hatIsVisible.value) {
-        mendls.value.src = mendlsList[mendlsIndex].src;
-      }
-    }, 15);
+    }, 10);
   });
 });
 
@@ -110,8 +32,26 @@ onMounted(() => {
     <div class="footer" ref="footer">
       <div class="footer__grid">
         <div class="footer__image-container">
-          <img ref="hat" src="@/assets/images/hat/lobbyhat0.webp" alt="Lobby hat" width="auto" height="auto"
-            class="footer__image footer__image--hat" />
+          <img src="@/assets/images/hat/lobbyhat0.webp" alt="Lobbyboy hat" width="auto" height="auto"
+            class="footer__image footer__image--hat visible">
+          <img src="@/assets/images/hat/lobbyhat1.webp" alt="Lobbyboy hat" width="auto" height="auto"
+            class="footer__image footer__image--hat">
+          <img src="@/assets/images/hat/lobbyhat2.webp" alt="Lobbyboy hat" width="auto" height="auto"
+            class="footer__image footer__image--hat">
+          <img src="@/assets/images/hat/lobbyhat3.webp" alt="Lobbyboy hat" width="auto" height="auto"
+            class="footer__image footer__image--hat">
+          <img src="@/assets/images/hat/lobbyhat4.webp" alt="Lobbyboy hat" width="auto" height="auto"
+            class="footer__image footer__image--hat">
+          <img src="@/assets/images/hat/lobbyhat5.webp" alt="Lobbyboy hat" width="auto" height="auto"
+            class="footer__image footer__image--hat">
+          <img src="@/assets/images/hat/lobbyhat6.webp" alt="Lobbyboy hat" width="auto" height="auto"
+            class="footer__image footer__image--hat">
+          <img src="@/assets/images/hat/lobbyhat7.webp" alt="Lobbyboy hat" width="auto" height="auto"
+            class="footer__image footer__image--hat">
+          <img src="@/assets/images/hat/lobbyhat8.webp" alt="Lobbyboy hat" width="auto" height="auto"
+            class="footer__image footer__image--hat">
+          <img src="@/assets/images/hat/lobbyhat9.webp" alt="Lobbyboy hat" width="auto" height="auto"
+            class="footer__image footer__image--hat">
         </div>
         <div class="footer__text">
           <div class="footer__paragraph">
@@ -138,8 +78,26 @@ onMounted(() => {
           </div>
         </div>
         <div class="footer__image-container">
-          <img ref="mendls" src="@/assets/images/cap/mendls0.webp" alt="Lobby hat" width="auto" height="auto"
-            class="footer__image footer__image--mendls" />
+          <img src="@/assets/images/cap/mendls0.webp" alt="Lobbyboy hat" width="auto" height="auto"
+            class="footer__image footer__image--mendls visible">
+          <img src="@/assets/images/cap/mendls1.webp" alt="Lobbyboy hat" width="auto" height="auto"
+            class="footer__image footer__image--mendls">
+          <img src="@/assets/images/cap/mendls2.webp" alt="Lobbyboy hat" width="auto" height="auto"
+            class="footer__image footer__image--mendls">
+          <img src="@/assets/images/cap/mendls3.webp" alt="Lobbyboy hat" width="auto" height="auto"
+            class="footer__image footer__image--mendls">
+          <img src="@/assets/images/cap/mendls4.webp" alt="Lobbyboy hat" width="auto" height="auto"
+            class="footer__image footer__image--mendls">
+          <img src="@/assets/images/cap/mendls5.webp" alt="Lobbyboy hat" width="auto" height="auto"
+            class="footer__image footer__image--mendls">
+          <img src="@/assets/images/cap/mendls6.webp" alt="Lobbyboy hat" width="auto" height="auto"
+            class="footer__image footer__image--mendls">
+          <img src="@/assets/images/cap/mendls7.webp" alt="Lobbyboy hat" width="auto" height="auto"
+            class="footer__image footer__image--mendls">
+          <img src="@/assets/images/cap/mendls8.webp" alt="Lobbyboy hat" width="auto" height="auto"
+            class="footer__image footer__image--mendls">
+          <img src="@/assets/images/cap/mendls9.webp" alt="Lobbyboy hat" width="auto" height="auto"
+            class="footer__image footer__image--mendls">
         </div>
       </div>
       <div class="footer__background-logo">
@@ -183,6 +141,7 @@ onMounted(() => {
     width: 100%;
     display: flex;
     align-items: center;
+    position: relative;
 
   }
 
@@ -190,6 +149,12 @@ onMounted(() => {
     width: 80%;
     margin: 0 auto;
     height: auto;
+    position: absolute;
+    display: none;
+
+    &.visible {
+      display: block;
+    }
 
     &--mendls {
       transform: scale(1.25);
